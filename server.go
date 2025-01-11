@@ -17,14 +17,21 @@ var GOOGLE_CREDENTIALS = os.Getenv("GOOGLE_CLOUD_AUTH")
 var PORT = os.Getenv("PORT")
 
 func init() {
-	var err error
+	// only if needs local
+	// var err error
 	// time.Local, err = time.LoadLocation("America/Sao_Paulo")
-	if err != nil {
-		panic(err)
-	}
+	// if err != nil {
+	// 	panic(err)
+	// }
 }
 
 func main() {
+	port := "1323"
+	if PORT != "" {
+		port = PORT
+	}
+	log.Printf("Running HTTP server at port \"%v\"\n", port)
+
 	path, _ := os.Getwd()
 	LoadGoogleCredentials(path)
 
@@ -33,7 +40,7 @@ func main() {
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
-	e.Logger.Fatal(e.Start(":" + PORT))
+	e.Logger.Fatal(e.Start(":" + port))
 }
 
 func LoadGoogleCredentials(rootPath string) {
