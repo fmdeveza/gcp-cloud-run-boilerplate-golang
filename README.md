@@ -5,8 +5,8 @@ Simple boilerplate code for [Google Cloud Run](https://cloud.google.com/run) wri
 
 Just go run it and it serves at port `1323` by default:
 ```console
-$ go run server.go 
-2025/01/13 09:22:38 Running HTTP server at port "1323"
+$ go run cmd/server.go
+2025/01/15 21:22:20 Running HTTP server at port "1323"
 
    ____    __
   / __/___/ /  ___

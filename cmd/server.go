@@ -11,6 +11,8 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 
 	"log"
+
+	f "fmdeveza/gcp-cloud-run-boilerplate-golang"
 )
 
 var GOOGLE_CREDENTIALS = os.Getenv("GOOGLE_CLOUD_AUTH")
@@ -36,6 +38,7 @@ func main() {
 	LoadGoogleCredentials(path)
 
 	e := echo.New()
+	e.POST("/", f.Trigger)
 
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
